@@ -4,11 +4,11 @@ import "./App.css";
 function List(props) {
   
   const handleChange = () => {
-    props.taskChecked(props.index, props.task);
+    props.taskChecked(props.task);
   }
 
   const handleDelete = () => {
-    props.deleteTask(props.task.id);
+    props.deleteTask(props.index);
   }  
   
   const {task} = props

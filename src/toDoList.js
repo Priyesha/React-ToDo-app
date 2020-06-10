@@ -30,10 +30,11 @@ class ToDoList extends Component {
     }
   };
 
-  taskChecked = (i, task) => {
+  taskChecked = (task) => {
     let taskList = [...this.state.taskList];
-    taskList[i].checked = !taskList[i].checked;
-    taskList[i].status = taskList[i].checked ? 'completed' : 'active';
+    let currentTask = taskList.find(item => item.id === task.id);
+    currentTask.checked = !currentTask.checked;
+    currentTask.status = currentTask.checked ? 'completed' : 'active';
     this.setState({taskList}, () => {
       console.log(this.state.taskList);
     });
@@ -63,7 +64,7 @@ class ToDoList extends Component {
     
         <ul>
         {taskList.map((task, index) => (
-          <List key={index} task={task} index={index} taskChecked={this.taskChecked} deleteTask={this.deleteTask}/>
+          <List key={task.id} task={task} index={index} taskChecked={this.taskChecked} deleteTask={this.deleteTask}/>
         ))}
         </ul>
 
